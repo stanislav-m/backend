@@ -14,7 +14,9 @@ const jsonPlaceholderProxy = createProxyMiddleware({
   },
   onProxyRes: (proxyRes, req, res) => {
     proxyRes.headers['Access-Control-Allow-Origin'] = '*';
-    console.log(Date.now(), proxyRes.statusCode);
+    proxyRes.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, PATCH, OPTIONS';
+    proxyRes.headers['Access-Control-Allow-Headers'] = 'X-Requested-With, content-type, Authorization';
+	console.log(Date.now(), proxyRes.statusCode);
   },
   onProxyReq: (proxyReq, req, res) => {
     proxyReq.setHeader('Access-Control-Allow-Origin', '*');
